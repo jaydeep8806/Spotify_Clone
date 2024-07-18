@@ -1,5 +1,6 @@
 console.log('Lets write javascript');
 let currentSong = new Audio();
+let songs;
 
 function secondsToMinutesSeconds(seconds) {
   if (isNaN(seconds) || seconds < 0) {
@@ -15,8 +16,8 @@ function secondsToMinutesSeconds(seconds) {
   return `${formattedMinutes}:${formattedSeconds}`;
 }
 
-async function getSongs() {
-  let a = await fetch('http://127.0.0.1:5500/songs/');
+async function getSongs(folder) {
+  let a = await fetch(`http://127.0.0.1:5500/${folder}/`);
   let response = await a.text();
   let div = document.createElement('div');
   div.innerHTML = response;
@@ -28,8 +29,6 @@ async function getSongs() {
       songs.push(element.href.split('/songs/')[1]);
     }
   }
-  console.log('hiiii');
-  console.log(songs);
   return songs;
 }
 
@@ -47,7 +46,7 @@ const playMusic = (track, pause = false) => {
 async function main() {
   //get thelist of all the songs
 
-  let songs = await getSongs();
+  songs = await getSongs();
   playMusic(songs[0], true);
 
   let songUL = document
@@ -103,5 +102,46 @@ async function main() {
     document.querySelector('.circle').style.left = percent + '%';
     currentSong.currentTime = (currentSong.duration * percent) / 100;
   });
+
+  // add an event listener for hamburger
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    document.querySelector('.left').style.left = '0';
+  });
+
+  // add an event listener for close button
+  document.querySelector('.close').addEventListener('click', () => {
+    document.querySelector('.left').style.left = '-120%';
+  });
+
+  // add an event listener to previous
+  previous.addEventListener('click', () => {
+    currentSong.pause();
+    console.log('previous clicked');
+    console.log(currentSong);
+    let index = songs.indexOf(currentSong.src.split('/').slice(-1)[0]);
+    if (index - 1 >= 0) {
+      playMusic(songs[index - 1]);
+    }
+  });
+
+  // add an event listener to next
+  next.addEventListener('click', () => {
+    currentSong.pause();
+    console.log('next clicked');
+
+    let index = songs.indexOf(currentSong.src.split('/').slice(-1)[0]);
+    if (index + 1 < songs.length) {
+      playMusic(songs[index + 1]);
+    }
+  });
+
+  //Addan eventto volume
+  document
+    .querySelector('.range')
+    .getElementsByTagName('input')[0]
+    .addEventListener('change', (e) => {
+      console.log('Setting volume to', e.target.value, '/100');
+      currentSong.volume = parseInt(e.target.value) / 100;
+    });
 }
 main();
