@@ -72,64 +72,29 @@
             <div class="spotifyplaylist">
                 <h1>Spotify Playlist</h1>
 
-                <div class="cardcontainer">
-
-                    <div class="card">
-
-                        <div class="play">
+                <div class="cardcontainer"></div>
 
 
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-
-                                <path d="M5 20V4L19 12L5 20Z" stroke="#141834" fill="#000" stroke-width=" 1.5"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <img src="https://i.scdn.co/image/ab67706f00000002b55b6074da1d43715fc16d6d" alt="">
-                        <h2>Happy Hits!</h2>
-                        <p>Hits to boost your mood and fill you with happiness!k</p>
-
-
-                    </div>
-                    <div class="card">
-                        <div class="play">
-
-
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-
-                                <path d="M5 20V4L19 12L5 20Z" stroke="#141834" fill="#000" stroke-width=" 1.5"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <img src="https://i.scdn.co/image/ab67706f00000002b55b6074da1d43715fc16d6d" alt="">
-                        <h2>Happy Hits!</h2>
-                        <p>Hits to boost your mood and fill you with happiness!k</p>
-
+                <div class="playbar">
+                    <div class="seekbar">
+                        <div class="circle"></div>
                     </div>
 
-                    <div class="playbar">
-                        <div class="seekbar">
-                            <div class="circle"></div>
+                    <div class="abovebar">
+                        <div class="songinfo"></div>
+
+                        <div class="songbuttons">
+                            <img width="35" id="previous" src="prevsong.svg" alt="">
+                            <img width="35" id="play" src="play.svg" alt="">
+                            <img width="35" id="next" src="nextsong.svg" alt="">
                         </div>
+                        <div class="timevol">
+                            <div class="songtime"></div>
 
-                        <div class="abovebar">
-                            <div class="songinfo"></div>
-
-                            <div class="songbuttons">
-                                <img width="35" id="previous" src="prevsong.svg" alt="">
-                                <img width="35" id="play" src="play.svg" alt="">
-                                <img width="35" id="next" src="nextsong.svg" alt="">
-                            </div>
-                            <div class="timevol">
-                                <div class="songtime"></div>
-
-                                <div class="volume">
-                                    <img src="volume.svg" alt="">
-                                    <div class="range">
-                                        <input type="range" name="volume" id="">
-                                    </div>
+                            <div class="volume">
+                                <img src="volume.svg" alt="">
+                                <div class="range">
+                                    <input type="range" name="volume" id="">
                                 </div>
                             </div>
                         </div>
@@ -137,6 +102,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script src="scipt.js"></script>
 </body>
