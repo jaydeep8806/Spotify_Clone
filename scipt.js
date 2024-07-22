@@ -31,6 +31,7 @@ async function getSongs(folder) {
       songs.push(element.href.split(`${folder}/`)[1]);
     }
   }
+
   let songUL = document
     .querySelector('.songList')
     .getElementsByTagName('ul')[0];
@@ -55,10 +56,10 @@ async function getSongs(folder) {
     document.querySelector('.songList').getElementsByTagName('li')
   ).forEach((e) => {
     e.addEventListener('click', (element) => {
-      //console.log(e.querySelector('.info').firstElementChild.innerHTML);
       playMusic(e.querySelector('.info').firstElementChild.innerHTML.trim());
     });
   });
+  return songs;
 }
 
 const playMusic = (track, pause = false) => {
@@ -184,12 +185,18 @@ async function main() {
     .addEventListener('change', (e) => {
       //console.log('Setting volume to', e.target.value, '/100');
       currentSong.volume = parseInt(e.target.value) / 100;
+      if (currentSong.volume > 0) {
+        document.querySelector('.volume>img').src = document
+          .querySelector('.volume>img')
+          .src.replace('mute.svg', 'volume.svg');
+      }
     });
 
   // Load the playlist when card is clicked
   Array.from(document.getElementsByClassName('card')).forEach((e) => {
     e.addEventListener('click', async (item) => {
       songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`);
+      playMusic(songs[0]);
     });
   });
 

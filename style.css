@@ -61,10 +61,11 @@ body {
   display: flex;
   font-size: 10px;
   color: grey;
-  gap: 7px;
+  gap: 15px;
   position: absolute;
   bottom: 0;
   padding: 10px 0;
+  padding-left: 37px;
 }
 
 .footer a {
@@ -136,7 +137,8 @@ body {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 168px;
+  bottom: 88px;
+  right: 17px;
   opacity: var(--a);
   right: 17px;
   transition: all 1s ease-out;
@@ -184,6 +186,9 @@ body {
   border-radius: 10px;
   width: 68%;
   min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .songbuttons {
@@ -246,7 +251,7 @@ body {
   background: black;
   border-radius: 10px;
   position: absolute;
-  bottom: 0;
+  bottom: 3px;
   margin: 6px;
   cursor: pointer;
 }
@@ -298,6 +303,7 @@ body {
 
 .humburger {
   display: none;
+  cursor: pointer;
 }
 
 .hamburgerContainer {
@@ -316,12 +322,15 @@ body {
 @media (max-width: 1200px) {
   .left {
     position: absolute;
-    left: -120%;
+    left: -130%;
     transition: all 0.3s ease;
     z-index: 1;
     width: 373px;
     background-color: black;
     padding: 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
   }
 
   .songinfo,
@@ -365,7 +374,7 @@ body {
   }
 
   .card {
-    width: 90vw;
+    width: 55vw;
   }
   .cardcontainer {
     margin: 0;
@@ -380,10 +389,40 @@ body {
     gap: 23px;
     align-items: center;
   }
+  .cardcontainer {
+    max-height: unset;
+    overflow-y: unset;
+    margin-bottom: 35vh;
+  }
+  .playbar {
+    right: 40px;
+  }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .card {
-    width: 84vw;
+    width: 100%;
+  }
+
+  .header > * {
+    padding: 2px;
+  }
+
+  .buttons > * {
+    margin: 0 6px;
+  }
+
+  .header {
+    padding: 7px;
+  }
+
+  .spotifyplaylist h1 {
+    padding: 4px;
+  }
+  .library {
+    height: 85vh;
+  }
+  .left {
+    width: 100vw;
   }
 }
